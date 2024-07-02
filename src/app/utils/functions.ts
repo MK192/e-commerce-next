@@ -70,24 +70,27 @@ single item page */
 export const addSingleItem = (
   state: any,
   numberOfItems: number,
-  selected: CartItemsType
+  item: CartItemsType
 ) => {
   let cartArray = [...state.cart];
-  // let selectedItem = cartArray?.find(
-  //   (item: CartItemsType) => item.id === selected.id
-  // );
+  const indexOfElement = cartArray.findIndex(
+    (obj: CartItemsType) => obj?.id === item?.id
+  );
 
-  // if (selectedItem) {
-  //   const itemId = cartArray.findIndex((item) => item.id === selected.id);
-  //   const modItem = {
-  //     ...selectedItem,
-  //     quantity: selectedItem.quantity + numberOfItems,
-  //   };
-  //   cartArray.splice(itemId, 1, modItem);
-  // } else {
-  //   selected = { ...selected, quantity: numberOfItems };
-  //   cartArray.push(...cartArray, selected);
-  // }
+  if (indexOfElement !== -1) {
+    state.cart[indexOfElement] = {
+      ...state.cart[indexOfElement],
+      quantity: state.cart[indexOfElement].quantity + numberOfItems,
+    };
+  } else {
+    item = {
+      ...item,
+      quantity: item.quantity
+        ? (item.quantity += numberOfItems)
+        : numberOfItems,
+    };
+    cartArray.push(item);
+  }
 
   return cartArray;
 };

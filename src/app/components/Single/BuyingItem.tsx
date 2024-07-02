@@ -21,7 +21,6 @@ export default function BuyingItem({ item }: Props) {
   const [numberOfItems, setNumberOfItems] = useState(1);
   const price = (numberOfItems * item?.price).toFixed(2);
   const { cart, dispatch } = useCart();
-  console.log(cart);
 
   return (
     <div>
@@ -45,7 +44,7 @@ export default function BuyingItem({ item }: Props) {
           if (isLocalStorageAccessible()) {
             dispatch({
               type: RActions.ADD_SINGLE_ITEM,
-              payload: { item: item },
+              payload: { numberOfItems, item },
             });
           } else {
             alert("localstorage unavailable");

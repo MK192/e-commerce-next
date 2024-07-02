@@ -1,6 +1,5 @@
 //enum
 import { RActions } from "../enums/actions";
-import { CartItemsType } from "../types/cart";
 
 //functions
 import {
@@ -13,12 +12,16 @@ import {
 export const cartReducer = (state: any, action: any) => {
   switch (action.type) {
     case RActions.ADD_SINGLE_ITEM:
-      const cartArray = state.cart.items.push(action.payload.item);
-      console.log(cartArray);
+      const cartArray = addSingleItem(
+        state,
+        action.payload.numberOfItems,
+        action.payload.item
+      );
+
+      localStorage.setItem("cart", JSON.stringify(cartArray));
       return {
         ...state,
-
-        cart: { ...state.cart, items: cartArray },
+        cart: cartArray,
       };
 
     case RActions.ADD_ITEM_TO_CART:
