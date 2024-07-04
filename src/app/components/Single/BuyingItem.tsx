@@ -20,7 +20,7 @@ type Props = {
 export default function BuyingItem({ item }: Props) {
   const [numberOfItems, setNumberOfItems] = useState(1);
   const price = (numberOfItems * item?.price).toFixed(2);
-  const { cart, dispatch } = useCart();
+  const { dispatch } = useCart();
 
   return (
     <div>

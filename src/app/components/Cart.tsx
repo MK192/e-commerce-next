@@ -12,7 +12,7 @@ import { useCart } from "../context/CartContext";
 import { StyledCart } from "./StyledComponents/Cart.styled";
 
 export default function Cart() {
-  const { cart } = useCart();
+  const { state } = useCart();
   const [showCartModal, setShowCartModal] = useState(false);
 
   return (
@@ -25,10 +25,12 @@ export default function Cart() {
           priority
           alt="shopping cart"
           className={
-            cart?.cart?.length === 0 ? "empty-cart-image-nav" : "cart-image-nav"
+            state?.cart?.length === 0
+              ? "empty-cart-image-nav"
+              : "cart-image-nav"
           }
         />
-        <div className="number-of-items-nav">{cart?.cart?.length ?? "0"}</div>
+        <div className="number-of-items-nav">{state?.cart?.length ?? "0"}</div>
       </div>
 
       {showCartModal ? (

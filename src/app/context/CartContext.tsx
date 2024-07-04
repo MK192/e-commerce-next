@@ -9,7 +9,8 @@ import {
 } from "react";
 
 //type
-import { CartItemsType } from "../types/cart";
+
+import { CartStateType } from "../types/state";
 
 //reducer
 import { cartReducer } from "../reducers/cartReducer";
@@ -18,12 +19,12 @@ import { cartReducer } from "../reducers/cartReducer";
 import { RActions } from "../enums/actions";
 
 interface CartContextDefaultValue {
-  cart: string | CartItemsType[];
+  state: CartStateType;
   dispatch: (action: any) => void;
 }
 
 const CartDataContext = createContext<CartContextDefaultValue>({
-  cart: "[]",
+  state: { cart: [] },
   dispatch: () => {},
 });
 type Props = {
@@ -31,15 +32,15 @@ type Props = {
 };
 
 const CartContext = ({ children }: Props) => {
-  const [cart, dispatch] = useReducer(cartReducer, {
+  const [state, dispatch] = useReducer(cartReducer, {
     cart: [],
   });
-
   useEffect(() => {
     dispatch({ type: RActions.GET_CART });
   }, []);
+
   return (
-    <CartDataContext.Provider value={{ cart, dispatch }}>
+    <CartDataContext.Provider value={{ state, dispatch }}>
       {children}
     </CartDataContext.Provider>
   );
