@@ -14,7 +14,7 @@ import { RActions } from "@/app/enums/actions";
 import { CartItemsType } from "../../types/cart";
 
 //functions
-import { addToCart, isLocalStorageAccessible } from "../../utils/functions";
+import { isLocalStorageAccessible } from "../../utils/functions";
 
 //style
 import { StyledItemCard } from "../StyledComponents/ItemCard.styled";
@@ -26,7 +26,7 @@ type Props = {
 export default function ItemCard({ item }: Props) {
   const [animationReady, setAnimationReady] = useState(true);
   const { setCategory } = useCategory();
-  const { cart, dispatch } = useCart();
+  const { dispatch } = useCart();
 
   return (
     <>

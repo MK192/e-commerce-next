@@ -1,5 +1,6 @@
 //types
 import { CartItemsType } from "../types/cart";
+import { CartStateType } from "../types/state";
 
 /* this functions checks is localstorage available to read or write */
 export function isLocalStorageAccessible() {
@@ -18,7 +19,7 @@ export function isLocalStorageAccessible() {
 
 /* this function add item to cart or 
 increase quantity of items if item is already added to cart*/
-export const addToCart = (state: any, item: CartItemsType) => {
+export const addToCart = (state: CartStateType, item: CartItemsType) => {
   const cartArray = [...state.cart];
   const indexOfElement = cartArray.findIndex(
     (obj: CartItemsType) => obj?.id === item?.id
@@ -38,37 +39,29 @@ export const addToCart = (state: any, item: CartItemsType) => {
 
 /* this function change value of input field, also create new
 cart object with updates about quantity */
-export const handleChange = (
-  id: number,
-  value: number,
-  prev: number,
-  cartItems: CartItemsType[],
-  setNewValue: (quantity: number | null) => void,
-  setTotal: (quantity: number) => void,
-  setCartItems: (cartItems: CartItemsType[]) => void
-) => {
-  cartItems.map((item) => {
-    if (item.id === id) {
-      item.quantity = Number(value);
-      setNewValue(item.quantity);
-      setTotal(prev + value);
-      localStorage.setItem("cart", JSON.stringify(cartItems));
-    }
-  });
-  setCartItems(cartItems);
+export const handleChange = (id: number, numberOfItems: number) => {
+  const cartArray = JSON.parse(localStorage.getItem("cart") || "[]");
+  const indexOfElement = cartArray.findIndex(
+    (obj: CartItemsType) => obj?.id === id
+  );
+  cartArray[indexOfElement] = {
+    ...cartArray[indexOfElement],
+    quantity: numberOfItems,
+  };
+  return cartArray;
 };
 /* this function delete selected item from cart and change 'cart' localstorage object */
-export const deleteItem = (id: number, cartItems: CartItemsType[]) => {
-  const newArray = cartItems.filter((item) => item.id !== id);
-
-  return JSON.stringify(newArray);
+export const deleteItem = (state: CartStateType, id: number) => {
+  let cartArray = [...state.cart];
+  cartArray = cartArray.filter((item) => item.id !== id);
+  return cartArray;
 };
 
 /* this function add single or multiple items of same type to cart, function is used in 
 single item page */
 
 export const addSingleItem = (
-  state: any,
+  state: CartStateType,
   numberOfItems: number,
   item: CartItemsType
 ) => {

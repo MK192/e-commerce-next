@@ -1,11 +1,11 @@
 "use client";
+import { useState } from "react";
 
 //components
 import CategoryModal from "./modals/CategoryModal";
 
 //context
 import { useCategory } from "../context/CategoryContext";
-import { useState } from "react";
 
 //style
 import { StyledFilter } from "./StyledComponents/Filter.styled";

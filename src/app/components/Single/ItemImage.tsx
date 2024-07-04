@@ -3,6 +3,7 @@ import Image from "next/image";
 
 //components
 import BackArrow from "../BackArrow";
+
 type Props = {
   showArrow?: boolean;
   imgSrc: string;
