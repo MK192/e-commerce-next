@@ -1,11 +1,13 @@
 "use client";
+import { useState } from "react";
 
 //components
-import CategoryModal from "./modals/CategoryModal";
+import Button from "./General/Button";
+
+import CategoryModal from "./Modals/CategoryModal";
 
 //context
 import { useCategory } from "../context/CategoryContext";
-import { useState } from "react";
 
 //style
 import { StyledFilter } from "./StyledComponents/Filter.styled";
@@ -29,16 +31,22 @@ const Filter = ({ setSearch }: Props) => {
       <div className="category">
         <strong>Category:</strong> {category}
         {category ? (
-          <button className="selected-category" onClick={() => setCategory("")}>
-            clear filter
-          </button>
-        ) : (
-          <button
-            className="selected-all"
-            onClick={() => setShowCategoryModal(true)}
+          <Button
+            version="filter"
+            borderColor="transparent"
+            backgroundColor="#b61a1a"
+            handleClick={() => setCategory("")}
           >
-            CHANGE
-          </button>
+            <p className="clear-paragraph"> clear filter</p>
+          </Button>
+        ) : (
+          <Button
+            handleClick={() => setShowCategoryModal(true)}
+            borderColor="#46940d"
+            version="filter"
+          >
+            <p className="change-paragraph">CHANGE</p>
+          </Button>
         )}
       </div>
       {showCategoryModal ? (

@@ -2,7 +2,8 @@ import Link from "next/link";
 import Image from "next/image";
 
 //components
-import BackArrow from "../BackArrow";
+import BackArrow from "../General/BackArrow";
+
 type Props = {
   showArrow?: boolean;
   imgSrc: string;

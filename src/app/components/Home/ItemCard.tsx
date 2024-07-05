@@ -3,6 +3,9 @@ import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
+//components
+import Button from "../General/Button";
+
 //context
 import { useCart } from "../../context/CartContext";
 import { useCategory } from "../../context/CategoryContext";
@@ -14,10 +17,11 @@ import { RActions } from "@/app/enums/actions";
 import { CartItemsType } from "../../types/cart";
 
 //functions
-import { addToCart, isLocalStorageAccessible } from "../../utils/functions";
+import { isLocalStorageAccessible } from "../../utils/functions";
 
 //style
 import { StyledItemCard } from "../StyledComponents/ItemCard.styled";
+import { theme } from "@/app/styles/variables";
 
 type Props = {
   item: CartItemsType;
@@ -26,26 +30,29 @@ type Props = {
 export default function ItemCard({ item }: Props) {
   const [animationReady, setAnimationReady] = useState(true);
   const { setCategory } = useCategory();
-  const { cart, dispatch } = useCart();
+  const { dispatch } = useCart();
 
   return (
     <>
       <StyledItemCard>
-        <button
-          type="button"
-          onClick={() => {
-            if (isLocalStorageAccessible()) {
-              dispatch({
-                type: RActions.ADD_ITEM_TO_CART,
-                payload: item,
-              });
-            } else {
-              alert("localstorage is unavailable");
-            }
-          }}
-        >
-          +
-        </button>
+        <div className="add-button">
+          <Button
+            version="rounded"
+            backgroundColor={theme.darkBlueBg}
+            handleClick={() => {
+              if (isLocalStorageAccessible()) {
+                dispatch({
+                  type: RActions.ADD_ITEM_TO_CART,
+                  payload: item,
+                });
+              } else {
+                alert("localstorage is unavailable");
+              }
+            }}
+          >
+            <p className="plus-paragraph"> +</p>
+          </Button>
+        </div>
         <Link href={`pages/singlePage/${item.id}`}>
           <Image
             src={item.image}

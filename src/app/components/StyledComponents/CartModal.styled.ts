@@ -41,6 +41,16 @@ export const StyledCartModal = styled.div`
     height: 8.5rem;
     margin-bottom: 10px;
     position: relative;
+    .remove-item {
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      width: 2.5rem;
+      height: 2.5rem;
+    }
+    p {
+      color: black;
+    }
     img {
       margin-top: 10px;
       height: 80%;
@@ -48,16 +58,6 @@ export const StyledCartModal = styled.div`
       object-fit: contain;
       object-position: center;
       margin-left: 5px;
-    }
-    button {
-      border-radius: 50%;
-      height: 25px;
-      width: 25px;
-      border: 1px solid red;
-      color: black;
-      background-color: hsla(0, 0%, 100%, 0.8);
-      cursor: pointer;
-      position: absolute;
     }
   }
   .middle-div {

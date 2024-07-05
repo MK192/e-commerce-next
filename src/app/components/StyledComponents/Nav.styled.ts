@@ -11,7 +11,7 @@ export const StyledNav = styled.nav<IActive>`
   justify-content: space-between;
   height: 5rem;
   overflow: hidden;
-  ${theme.lightGreyBg};
+  ${theme.lightGrayBg};
   padding: 0 10px;
   box-shadow: 0 1px 6px 0 rgb(32 33 36/17%);
   position: fixed;
@@ -81,7 +81,7 @@ export const StyledNav = styled.nav<IActive>`
     color: #f8fcfc;
     right: -10px;
     width: 50px;
-    ${theme.lightGreyBg}
+    ${theme.lightGrayBg}
     top: 15px;
     font-size: 12px;
 

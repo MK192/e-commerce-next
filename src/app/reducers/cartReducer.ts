@@ -1,6 +1,10 @@
 //enum
 import { RActions } from "../enums/actions";
 
+//type
+import { CartItemsType } from "../types/cart";
+import { CartStateType } from "../types/state";
+
 //functions
 import {
   addSingleItem,
@@ -9,10 +13,12 @@ import {
   deleteItem,
 } from "../utils/functions";
 
-export const cartReducer = (state: any, action: any) => {
+export const cartReducer = (state: CartStateType, action: any) => {
+  let cartArray: CartItemsType[] | [] = [];
+
   switch (action.type) {
     case RActions.ADD_SINGLE_ITEM:
-      const cartArray = addSingleItem(
+      cartArray = addSingleItem(
         state,
         action.payload.numberOfItems,
         action.payload.item
@@ -25,23 +31,22 @@ export const cartReducer = (state: any, action: any) => {
       };
 
     case RActions.ADD_ITEM_TO_CART:
-      const items = addToCart(state, action.payload);
-      localStorage.setItem("cart", JSON.stringify(items));
-      return { ...state, cart: items };
+      cartArray = addToCart(state, action.payload);
+      localStorage.setItem("cart", JSON.stringify(cartArray));
+      return { ...state, cart: cartArray };
 
     case RActions.DELETE_ITEM:
-      const cartWithoutItem = JSON.parse(
-        deleteItem(action.payload.id, action.payload.items)
-      );
-      return { ...state, cart: cartWithoutItem };
+      cartArray = deleteItem(state, action.payload.id);
+      localStorage.setItem("cart", JSON.stringify(cartArray));
+      return { ...state, cart: cartArray };
 
     case RActions.EMPTY_CART:
       clearCart();
       return { ...state, cart: [] };
 
     case RActions.GET_CART:
-      const cart = JSON.parse(localStorage.getItem("cart") || "[]");
-      return { ...state, cart: cart };
+      cartArray = JSON.parse(localStorage.getItem("cart") || "[]");
+      return { ...state, cart: cartArray };
 
     default:
       return state;

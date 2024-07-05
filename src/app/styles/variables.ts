@@ -18,26 +18,12 @@ export const theme = {
     color: #b61a1a;
   `,
   // background colors
-  lightGreyBg: css`
+  lightGrayBg: css`
     background-color: #f8fcfc;
   `,
   greenBg: css`
-    background-color: #46940d;
+   #46940d;
   `,
-  // font size
-  priceText: css`
-    font-size: 1.8rem;
-    color: #016141;
-  `,
-  titleText: css`
-    font-size: 1.8rem;
-    color: #00008b;
-  `,
-  subtitleText: css`
-    font-size: 1.2rem;
-  `,
-  categoryText: css`
-    font-size: 1.1rem;
-    color: #0d3c94;
-  `,
+  darkBlueBg: css`
+  #08259c`,
 };
