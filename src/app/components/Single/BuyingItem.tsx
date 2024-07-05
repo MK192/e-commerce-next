@@ -1,11 +1,14 @@
 "use client";
-import { useState, useRef, useEffect } from "react";
+import { useState } from "react";
+
+//components
+import Button from "../General/Button";
 
 //context
 import { useCart } from "@/app/context/CartContext";
 
 //function
-import { isLocalStorageAccessible, addSingleItem } from "@/app/utils/functions";
+import { isLocalStorageAccessible } from "@/app/utils/functions";
 
 //enum
 import { RActions } from "@/app/enums/actions";
@@ -13,6 +16,8 @@ import { RActions } from "@/app/enums/actions";
 //type
 import { CartItemsType } from "@/app/types/cart";
 
+//style
+import { theme } from "@/app/styles/variables";
 type Props = {
   item: CartItemsType;
 };
@@ -37,10 +42,9 @@ export default function BuyingItem({ item }: Props) {
         />
         {price}$
       </div>
-
-      <button
-        type="button"
-        onClick={() => {
+      <Button
+        backgroundColor={theme.greenBg}
+        handleClick={() => {
           if (isLocalStorageAccessible()) {
             dispatch({
               type: RActions.ADD_SINGLE_ITEM,
@@ -51,8 +55,8 @@ export default function BuyingItem({ item }: Props) {
           }
         }}
       >
-        Add to cart
-      </button>
+        <p>Add to cart</p>
+      </Button>
     </div>
   );
 }

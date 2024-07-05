@@ -4,14 +4,12 @@ import { theme } from "../../styles/variables";
 
 export const StyledItem = styled.article`
   display: flex;
-
   justify-content: center;
   gap: 15px;
   padding: 20px 50px;
   max-width: 94rem;
   margin-left: auto;
   margin-right: auto;
-
   margin-top: 50px;
   .loading {
     animation: rotation 2s infinite linear;
@@ -69,16 +67,16 @@ export const StyledItem = styled.article`
       outline: none;
     }
   }
-  button {
-    color: #fff;
-    padding: 10px 5px;
-    margin-bottom: 10px;
-    min-width: 90px;
-    border-radius: 5px;
-    border: none;
-    ${theme.greenBg};
-    cursor: pointer;
-  }
+  // button {
+  //   color: #fff;
+  //   padding: 10px 5px;
+  //   margin-bottom: 10px;
+  //   min-width: 90px;
+  //   border-radius: 5px;
+  //   border: none;
+  //   ${theme.greenBg};
+  //   cursor: pointer;
+  // }
   .selected-category {
     padding-top: 9px;
     text-transform: uppercase;

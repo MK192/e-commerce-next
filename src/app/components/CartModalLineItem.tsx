@@ -2,14 +2,20 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 
-// type
-import { CartItemsType } from "../types/cart";
+//components
+import Button from "./General/Button";
+
+//context
+import { useCart } from "../context/CartContext";
 
 //functions
 import { handleChange, isLocalStorageAccessible } from "../utils/functions";
 
-//context
-import { useCart } from "../context/CartContext";
+// type
+import { CartItemsType } from "../types/cart";
+
+//style
+import { StyledCartModalLineItems } from "./StyledComponents/CartModalLineItem.styled";
 
 type Props = {
   item: CartItemsType;
@@ -51,21 +57,26 @@ export default function CartModalLineItem({
 
   return (
     <div className="cart-item" key={item.id}>
-      <button
-        onClick={() => {
-          if (isLocalStorageAccessible()) {
-            dispatch({
-              type: "delete_item",
-              payload: { id: item.id },
-            });
-            setCartArray(state.cart);
-          } else {
-            alert("locaststorage is unavailable");
-          }
-        }}
-      >
-        x
-      </button>
+      <div className="remove-item">
+        <Button
+          version="rounded"
+          borderColor="red"
+          backgroundColor="#f0f0f0"
+          handleClick={() => {
+            if (isLocalStorageAccessible()) {
+              dispatch({
+                type: "delete_item",
+                payload: { id: item.id },
+              });
+              setCartArray(state.cart);
+            } else {
+              alert("locaststorage is unavailable");
+            }
+          }}
+        >
+          <p> x</p>
+        </Button>
+      </div>
       <Image
         src={item.image}
         alt="item from cart image"

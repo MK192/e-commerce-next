@@ -1,5 +1,6 @@
 //components
 import Modal from "./Modal";
+import Button from "../General/Button";
 
 //context
 import { useCategory } from "@/app/context/CategoryContext";
@@ -22,38 +23,38 @@ const CategoryModal = ({ setShowModalCategory, domNode }: Props) => {
     >
       <StyledCategoryModal>
         <div className="category-buttons">
-          <button
-            onClick={() => {
+          <Button
+            handleClick={() => {
               setCategory("electronics");
               setShowModalCategory(false);
             }}
           >
             electronics
-          </button>
-          <button
-            onClick={() => {
+          </Button>
+          <Button
+            handleClick={() => {
               setCategory("jewelery");
               setShowModalCategory(false);
             }}
           >
             jewelery
-          </button>
-          <button
-            onClick={() => {
+          </Button>
+          <Button
+            handleClick={() => {
               setCategory("men's clothing");
               setShowModalCategory(false);
             }}
           >
             men&apos;s clothing
-          </button>
-          <button
-            onClick={() => {
+          </Button>
+          <Button
+            handleClick={() => {
               setCategory("women's clothing");
               setShowModalCategory(false);
             }}
           >
             women&apos;s clothing
-          </button>
+          </Button>
         </div>
       </StyledCategoryModal>
     </Modal>
