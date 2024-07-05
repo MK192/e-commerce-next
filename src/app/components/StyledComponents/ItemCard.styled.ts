@@ -11,9 +11,10 @@ export const StyledItemCard = styled.article`
   margin-bottom: 10px;
   width: 26.66rem;
   height: 45.6rem;
-  ${theme.lightGreyBg};
+  ${theme.lightGrayBg};
   padding: 20px 15px 12px;
   position: relative;
+
   img {
     height: 24.9rem;
     width: 100%;
@@ -23,19 +24,17 @@ export const StyledItemCard = styled.article`
     cursor: pointer;
   }
 
-  button {
+  .add-button {
     position: absolute;
-    align-self: flex-end;
-    border-radius: 50%;
-    background-color: #08259c;
-    color: white;
-    border: none;
+    top: 15px;
+    right: 15px;
     width: 4.5rem;
     height: 4.5rem;
-    font-size: 25px;
-    font-weight: 700;
-    cursor: pointer;
   }
+  .plus-paragraph {
+    font-size: 25px;
+  }
+
   .price {
     align-self: flex-start;
     font-size: 18px;

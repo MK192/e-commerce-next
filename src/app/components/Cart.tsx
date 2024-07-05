@@ -3,7 +3,7 @@ import { useState } from "react";
 import Image from "next/image";
 
 //component
-import CartModal from "./modals/CartModal";
+import CartModal from "./Modals/CartModal";
 
 //context
 import { useCart } from "../context/CartContext";

@@ -18,17 +18,25 @@ export const StyledFilter = styled.header`
     border: 1px solid gray;
     padding: 5px;
   }
-  button {
-    padding: 3px 5px;
+  // button {
+  //   padding: 3px 5px;
+  //   border-radius: 5px;
+  //   margin-left: 5px;
+  //   font-size: 1.4rem;
+  // }
+  // .selected-category {
+  //   background-color: #b61a1a;
+  //   border: none;
+  //   color: white;
+  // }
 
-    border-radius: 5px;
-    margin-left: 5px;
-    font-size: 1.4rem;
-  }
-  .selected-category {
-    background-color: #b61a1a;
-    border: none;
-    color: white;
+  .category {
+    .clear-paragraph {
+      color: white;
+    }
+    .change-paragraph {
+      color: black;
+    }
   }
   .selected-category {
     cursor: pointer;

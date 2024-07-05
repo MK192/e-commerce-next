@@ -3,8 +3,9 @@ import { useState } from "react";
 import Image from "next/image";
 
 //components
-import Modal from "./Modal";
+import Button from "../General/Button";
 import CartModalLineItem from "../CartModalLineItem";
+import Modal from "./Modal";
 
 //context
 import { useCart } from "@/app/context/CartContext";
@@ -17,6 +18,7 @@ import { isLocalStorageAccessible } from "@/app/utils/functions";
 
 //style
 import { StyledCartModal } from "../StyledComponents/CartModal.styled";
+import { theme } from "@/app/styles/variables";
 
 type Props = {
   setShowModalCart: (showModal: boolean) => void;
@@ -41,7 +43,7 @@ const CartModal = ({ setShowModalCart, domNode }: Props) => {
               unoptimized={true}
               priority
             />
-            <p>Cart empty</p>
+            <p>Cart is empty</p>
           </div>
         ) : (
           <div className="cart">
@@ -56,8 +58,9 @@ const CartModal = ({ setShowModalCart, domNode }: Props) => {
 
             <div className="total">{total} $</div>
             <div className="buttons-div">
-              <button
-                onClick={() => {
+              <Button
+                backgroundColor="#444"
+                handleClick={() => {
                   if (isLocalStorageAccessible()) {
                     dispatch({ type: "empty_cart" });
                     setCartArray([]);
@@ -65,12 +68,13 @@ const CartModal = ({ setShowModalCart, domNode }: Props) => {
                     alert("localstorage is unavailable");
                   }
                 }}
-                className="clear-button"
               >
                 Clear
-              </button>
-              <button
-                onClick={() => {
+              </Button>
+
+              <Button
+                backgroundColor={theme.greenBg}
+                handleClick={() => {
                   if (isLocalStorageAccessible()) {
                     dispatch({ type: "empty_cart" });
                     setCartArray([]);
@@ -78,10 +82,9 @@ const CartModal = ({ setShowModalCart, domNode }: Props) => {
                     alert("localstorage is unavailable");
                   }
                 }}
-                className="buy-button"
               >
                 Buy
-              </button>
+              </Button>
             </div>
           </div>
         )}
