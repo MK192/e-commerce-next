@@ -1,5 +1,4 @@
 "use client";
-import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -21,14 +20,12 @@ import { isLocalStorageAccessible } from "../../utils/functions";
 
 //style
 import { StyledItemCard } from "../StyledComponents/ItemCard.styled";
-import { theme } from "@/app/styles/variables";
 
 type Props = {
   item: CartItemsType;
 };
 
 export default function ItemCard({ item }: Props) {
-  const [animationReady, setAnimationReady] = useState(true);
   const { setCategory } = useCategory();
   const { dispatch } = useCart();
 
@@ -38,7 +35,7 @@ export default function ItemCard({ item }: Props) {
         <div className="add-button">
           <Button
             version="rounded"
-            backgroundColor={theme.darkBlueBg}
+            backgroundColor="orange"
             handleClick={() => {
               if (isLocalStorageAccessible()) {
                 dispatch({
