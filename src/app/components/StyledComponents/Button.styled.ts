@@ -13,6 +13,7 @@ export const StyledButton = styled.button<ButtonProps>`
         return `
            padding: 3px 5px;
            border-radius: 5px;
+           cursor: pointer;
            border: ${
              $borderColor === "none" ? "none" : `1px solid ${$borderColor}`
            };

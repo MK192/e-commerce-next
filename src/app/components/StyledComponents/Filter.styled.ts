@@ -1,7 +1,10 @@
 "use client";
 import styled from "styled-components";
 
-export const StyledFilter = styled.header`
+type Theme = {
+  theme: string;
+};
+export const StyledFilter = styled.header<Theme>`
   display: flex;
   align-items: center;
   margin: 0 auto;
@@ -18,24 +21,19 @@ export const StyledFilter = styled.header`
     border: 1px solid gray;
     padding: 5px;
   }
-  // button {
-  //   padding: 3px 5px;
-  //   border-radius: 5px;
-  //   margin-left: 5px;
-  //   font-size: 1.4rem;
-  // }
-  // .selected-category {
-  //   background-color: #b61a1a;
-  //   border: none;
-  //   color: white;
-  // }
-
+  
   .category {
+     color: white;
+    }
     .clear-paragraph {
       color: white;
     }
     .change-paragraph {
-      color: black;
+      color: ${({ theme }) => (theme === "dark" ? "white" : "black")};
+    }
+
+    strong {
+      color: ${({ theme }) => (theme === "dark" ? "white" : "black")};
     }
   }
   .selected-category {

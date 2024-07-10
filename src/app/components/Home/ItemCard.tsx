@@ -1,5 +1,4 @@
 "use client";
-import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -21,16 +20,24 @@ import { isLocalStorageAccessible } from "../../utils/functions";
 
 //style
 import { StyledItemCard } from "../StyledComponents/ItemCard.styled";
-import { theme } from "@/app/styles/variables";
 
 type Props = {
   item: CartItemsType;
 };
 
 export default function ItemCard({ item }: Props) {
-  const [animationReady, setAnimationReady] = useState(true);
   const { setCategory } = useCategory();
-  const { dispatch } = useCart();
+  const { state, dispatch } = useCart();
+
+  const handleAnimation = (isAnimationActive: boolean) => {
+    if (!isAnimationActive) {
+      dispatch({ type: RActions.SET_ANIMATION_ACTIVE });
+
+      setTimeout(() => {
+        dispatch({ type: RActions.SET_ANIMATION_INACTIVE });
+      }, 2000);
+    }
+  };
 
   return (
     <>
@@ -38,13 +45,14 @@ export default function ItemCard({ item }: Props) {
         <div className="add-button">
           <Button
             version="rounded"
-            backgroundColor={theme.darkBlueBg}
+            backgroundColor="orange"
             handleClick={() => {
               if (isLocalStorageAccessible()) {
                 dispatch({
                   type: RActions.ADD_ITEM_TO_CART,
                   payload: item,
                 });
+                handleAnimation(state.isAnimationActive);
               } else {
                 alert("localstorage is unavailable");
               }

@@ -44,6 +44,16 @@ export const cartReducer = (state: CartStateType, action: any) => {
       clearCart();
       return { ...state, cart: [] };
 
+    case RActions.SET_ANIMATION_ACTIVE:
+      return {
+        ...state,
+        isAnimationActive: true,
+      };
+    case RActions.SET_ANIMATION_INACTIVE:
+      return {
+        ...state,
+        isAnimationActive: false,
+      };
     case RActions.GET_CART:
       cartArray = JSON.parse(localStorage.getItem("cart") || "[]");
       return { ...state, cart: cartArray };

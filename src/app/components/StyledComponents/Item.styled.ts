@@ -2,15 +2,50 @@
 import styled from "styled-components";
 import { theme } from "../../styles/variables";
 
-export const StyledItem = styled.article`
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-  padding: 20px 50px;
-  max-width: 94rem;
-  margin-left: auto;
-  margin-right: auto;
+type Theme = {
+  theme: string;
+};
+export const StyledItem = styled.article<Theme>`
+  ${({ theme }) => {
+    switch (theme) {
+      case "dark":
+        return `
+           background-color:#39486b;
+          .selected-category{
+           color:#a4aba6;
+         }
+          .selected-description{
+           color:white
+         }
+           .number-of-items{
+           color:white;
+         }
+           .selected-price{
+           color:#a4aba6;
+           }
+           strong{
+            color:white;
+         }
+
+    `;
+      default:
+        return `
+      background-color:#F2F2F2;
+      `;
+    }
+  }};
+
+  height: calc(100vh - 5rem);
   margin-top: 50px;
+  .item-container {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    padding: 20px 50px;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 90rem;
+  }
   .loading {
     animation: rotation 2s infinite linear;
     @keyframes rotation {
@@ -50,7 +85,6 @@ export const StyledItem = styled.article`
   }
   span {
     display: block;
-    ${theme.priceText};
     font-size: 18px;
     margin-bottom: 5px;
     font-weight: 700;
@@ -60,6 +94,7 @@ export const StyledItem = styled.article`
     justify-content: space-between;
     font-size: 16px;
     margin-bottom: 12px;
+
     input {
       padding: 5px;
       border-radius: 5px;
@@ -67,16 +102,7 @@ export const StyledItem = styled.article`
       outline: none;
     }
   }
-  // button {
-  //   color: #fff;
-  //   padding: 10px 5px;
-  //   margin-bottom: 10px;
-  //   min-width: 90px;
-  //   border-radius: 5px;
-  //   border: none;
-  //   ${theme.greenBg};
-  //   cursor: pointer;
-  // }
+
   .selected-category {
     padding-top: 9px;
     text-transform: uppercase;
@@ -92,11 +118,13 @@ export const StyledItem = styled.article`
     margin-bottom: 10px;
     display: block;
   }
-  @media (max-width: 750px) {
-    max-width: 42rem;
 
-    flex-direction: column;
-    gap: 10px;
+  @media (max-width: 750px) {
+    .item-container {
+      max-width: 42rem;
+      flex-direction: column;
+      gap: 10px;
+    }
 
     img {
       width: 150px;

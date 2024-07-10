@@ -27,9 +27,10 @@ type Props = {
 const CartModal = ({ setShowModalCart, domNode }: Props) => {
   const [total, setTotal] = useState<number>(0);
   const { state, dispatch } = useCart();
-  /* cartArray is made to be copy of state.cart, to prevent changes in other
+  /* cartArray is made to be copy of state.cart, to prevent rerenders in other
   components that use state.cart when something change in cart modal */
   const [cartArray, setCartArray] = useState([...state.cart]);
+
   return (
     <Modal title={"Cart"} setShowModal={setShowModalCart} domNode={domNode}>
       <StyledCartModal>

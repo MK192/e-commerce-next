@@ -3,11 +3,11 @@ import { useState } from "react";
 
 //components
 import Button from "./General/Button";
-
 import CategoryModal from "./Modals/CategoryModal";
 
 //context
 import { useCategory } from "../context/CategoryContext";
+import { useTheme } from "../context/ThemeContext";
 
 //style
 import { StyledFilter } from "./StyledComponents/Filter.styled";
@@ -17,10 +17,11 @@ type Props = {
 };
 const Filter = ({ setSearch }: Props) => {
   const { category, setCategory } = useCategory();
+  const { theme } = useTheme();
   const [showCategoryModal, setShowCategoryModal] = useState(false);
 
   return (
-    <StyledFilter>
+    <StyledFilter theme={theme}>
       <div className="search" id="categoryId">
         <input
           type="text"
