@@ -88,18 +88,6 @@ export const addSingleItem = (
   return cartArray;
 };
 
-/* this function activate animation for new item on cart icon */
-
-export const handleActive = (
-  setActive: (active: boolean) => void,
-  activate: boolean
-) => {
-  if (!activate) setActive(true);
-  setTimeout(() => {
-    setActive(false);
-  }, 2000);
-};
-
 /* function for deleting all items from cart state and from 'cart localstorage*/
 export const clearCart = () => {
   localStorage.clear();

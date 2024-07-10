@@ -27,7 +27,17 @@ type Props = {
 
 export default function ItemCard({ item }: Props) {
   const { setCategory } = useCategory();
-  const { dispatch } = useCart();
+  const { state, dispatch } = useCart();
+
+  const handleAnimation = (isAnimationActive: boolean) => {
+    if (!isAnimationActive) {
+      dispatch({ type: RActions.SET_ANIMATION_ACTIVE });
+
+      setTimeout(() => {
+        dispatch({ type: RActions.SET_ANIMATION_INACTIVE });
+      }, 2000);
+    }
+  };
 
   return (
     <>
@@ -42,6 +52,7 @@ export default function ItemCard({ item }: Props) {
                   type: RActions.ADD_ITEM_TO_CART,
                   payload: item,
                 });
+                handleAnimation(state.isAnimationActive);
               } else {
                 alert("localstorage is unavailable");
               }

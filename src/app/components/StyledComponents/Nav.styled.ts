@@ -2,10 +2,7 @@
 import styled from "styled-components";
 import { theme } from "@/app/styles/variables";
 
-interface IActive {
-  active: boolean;
-}
-export const StyledNav = styled.nav<IActive>`
+export const StyledNav = styled.nav`
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -67,7 +64,6 @@ export const StyledNav = styled.nav<IActive>`
     font-size: 12px;
     font-weight: 700;
     font-style: italic;
-
     padding: 4px 19px 4px 10px;
     border-radius: 27px 0 0 27px;
     white-space: nowrap;
@@ -90,20 +86,5 @@ export const StyledNav = styled.nav<IActive>`
     padding: 4px 19px 4px 10px;
     border-radius: 27px 0 0 27px;
     white-space: nowrap;
-  }
-  @keyframes wrap {
-    0% {
-      right: -80px;
-    }
-
-    50% {
-      right: 30px;
-    }
-    75% {
-      right: 30px;
-    }
-    100% {
-      right: -80px;
-    }
   }
 `;

@@ -18,6 +18,7 @@ import { CartItemsType } from "@/app/types/cart";
 
 //style
 import { theme } from "@/app/styles/variables";
+
 type Props = {
   item: CartItemsType;
 };
@@ -25,7 +26,18 @@ type Props = {
 export default function BuyingItem({ item }: Props) {
   const [numberOfItems, setNumberOfItems] = useState(1);
   const price = (numberOfItems * item?.price).toFixed(2);
-  const { dispatch } = useCart();
+  const { state, dispatch } = useCart();
+
+  const handleAnimation = (isActive: boolean) => {
+    !isActive;
+    {
+      dispatch({ type: RActions.SET_ANIMATION_ACTIVE });
+
+      setTimeout(() => {
+        dispatch({ type: RActions.SET_ANIMATION_INACTIVE });
+      }, 2000);
+    }
+  };
 
   return (
     <div>
@@ -50,6 +62,7 @@ export default function BuyingItem({ item }: Props) {
               type: RActions.ADD_SINGLE_ITEM,
               payload: { numberOfItems, item },
             });
+            handleAnimation(state.isAnimationActive);
           } else {
             alert("localstorage unavailable");
           }

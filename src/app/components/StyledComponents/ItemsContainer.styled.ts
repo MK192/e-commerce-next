@@ -1,18 +1,22 @@
 "use client";
 import styled from "styled-components";
 
-export const StyledItemsContainer = styled.div`
+type Theme = {
+  theme: string;
+};
+export const StyledItemsContainer = styled.div<Theme>`
   display: flex;
   flex-direction: column;
   align-items: center;
-  max-width: 90rem;
-  justify-content: center;
   margin: 0 auto;
+  min-height: 100vh;
   flex-wrap: wrap;
   padding: 0 10px;
   column-gap: 20px;
   row-gap: 10px;
   position: relative;
+  background-color: ${({ theme }) =>
+    theme === "dark" ? "#39486b" : "#F2F2F2"};
 
   .items {
     display: flex;

@@ -24,7 +24,7 @@ interface CartContextDefaultValue {
 }
 
 const CartDataContext = createContext<CartContextDefaultValue>({
-  state: { cart: [] },
+  state: { cart: [], isAnimationActive: false },
   dispatch: () => {},
 });
 type Props = {
@@ -34,6 +34,7 @@ type Props = {
 const CartContext = ({ children }: Props) => {
   const [state, dispatch] = useReducer(cartReducer, {
     cart: [],
+    isAnimationActive: false,
   });
   useEffect(() => {
     dispatch({ type: RActions.GET_CART });

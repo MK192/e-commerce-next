@@ -4,4 +4,6 @@ export enum RActions {
   DELETE_ITEM = "delete_item",
   EMPTY_CART = "empty_cart",
   GET_CART = "get_cart",
+  SET_ANIMATION_ACTIVE = "set_animation_active",
+  SET_ANIMATION_INACTIVE = "set_animation_inactive",
 }
