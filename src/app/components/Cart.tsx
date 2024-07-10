@@ -30,6 +30,10 @@ export default function Cart() {
               : "cart-image-nav"
           }
         />
+        <div className="cart-item-hidden-nav">Hid</div>
+        {state.isAnimationActive && (
+          <div className="cart-item-nav">ITEM(S) ADDED</div>
+        )}
         <div className="number-of-items-nav">{state?.cart?.length ?? "0"}</div>
       </div>
 

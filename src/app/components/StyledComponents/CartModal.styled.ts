@@ -39,7 +39,7 @@ export const StyledCartModal = styled.div`
     max-width: 57.8rem;
     width: 100%;
     height: 8.5rem;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
     position: relative;
     .remove-item {
       position: absolute;

@@ -14,9 +14,6 @@ import { handleChange, isLocalStorageAccessible } from "../utils/functions";
 // type
 import { CartItemsType } from "../types/cart";
 
-//style
-import { StyledCartModalLineItems } from "./StyledComponents/CartModalLineItem.styled";
-
 type Props = {
   item: CartItemsType;
   setCartArray: (array: CartItemsType[]) => void;

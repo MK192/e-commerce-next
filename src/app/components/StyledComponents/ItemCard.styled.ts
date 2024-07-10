@@ -33,6 +33,7 @@ export const StyledItemCard = styled.article`
   }
   .plus-paragraph {
     font-size: 25px;
+    color: black;
   }
 
   .price {
