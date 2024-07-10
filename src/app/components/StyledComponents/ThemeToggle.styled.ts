@@ -1,6 +1,10 @@
 import styled from "styled-components";
 
-export const StyledThemeToggle = styled.div`
+type Theme = {
+  theme: string;
+};
+
+export const StyledThemeToggle = styled.div<Theme>`
   position: absolute;
   top: 0.5rem;
   left: 12rem;
@@ -13,27 +17,27 @@ export const StyledThemeToggle = styled.div`
     align-items: center;
     font-size: 1.3rem;
     cursor: pointer;
-    color: var(--primary-text-color);
   }
 
   .toggle + label::before {
     content: "";
-    height: 1em;
-    width: 2em;
-    border-radius: 1em;
-    background-color: var(--toggle-bg);
-    margin-right: 0.5em;
+    height: 1.4rem;
+    width: 2.8rem;
+    border-radius: 1rem;
+    background-color: ${({ theme }) =>
+      theme === "dark" ? "#39486b" : "#f0eb9d"};
+    margin-right: 0.8rem;
     transition: background-color 250ms ease-in-out;
   }
 
   .toggle + label::after {
     content: "";
-    height: 0.8em;
-    width: 0.8em;
-    border-radius: 1em;
-    background-color: var(--toggle-fg);
+    height: 1.1rem;
+    width: 1.1rem;
+    border-radius: 1rem;
+    background-color: #ffd000;
     position: absolute;
-    left: 0.2em;
+    left: 0.3rem;
     transition: background-color 250ms ease-in-out, transform 250ms ease-in-out;
   }
 

@@ -37,6 +37,7 @@ export default function BuyingItem({ item }: Props) {
         dispatch({ type: RActions.SET_ANIMATION_INACTIVE });
       }, 2000);
     }
+    console.log("activate");
   };
 
   return (
