@@ -15,8 +15,9 @@ export default function ThemeToggle() {
     const theme = isChecked ? "dark" : "light";
     setTheme(theme);
   }, [isChecked, setTheme, theme]);
+
   return (
-    <StyledThemeToggle>
+    <StyledThemeToggle theme={theme}>
       <input
         type="checkbox"
         id="check"
@@ -24,7 +25,7 @@ export default function ThemeToggle() {
         onChange={() => setIsChecked((prev) => !prev)}
         checked={isChecked}
       />
-      <label htmlFor="check">Dark Mode</label>
+      <label htmlFor="check">Switch Mode</label>
     </StyledThemeToggle>
   );
 }

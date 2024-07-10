@@ -80,11 +80,25 @@ export const StyledNav = styled.nav`
     ${theme.lightGrayBg}
     top: 15px;
     font-size: 12px;
-
     font-weight: 700;
     font-style: italic;
     padding: 4px 19px 4px 10px;
     border-radius: 27px 0 0 27px;
     white-space: nowrap;
+  }
+  @keyframes wrap {
+    0% {
+      right: -80px;
+    }
+
+    50% {
+      right: 30px;
+    }
+    75% {
+      right: 30px;
+    }
+    100% {
+      right: -80px;
+    }
   }
 `;
